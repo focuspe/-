@@ -1,0 +1,267 @@
+<div class="row wrapper-min border-bottom white-bg page-heading" xmlns="http://www.w3.org/1999/html"
+     xmlns="http://www.w3.org/1999/html">
+    <div class="col-lg-12">
+        <h2><span id="breadcrumbsTitle">请假记录查询</span></h2>
+        <ol class="breadcrumb">
+            <li>
+                <a>考勤管理</a>
+            </li>
+            <li>
+                <a>请假管理</a>
+            </li>
+            <li class="active">
+                <strong>请假登记</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+    <form>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox m-b-none">
+                    <div class="ibox-content">
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <label class="col-lg-2 control-label">*请假员工：</label>
+                                <div class="col-lg-3">
+                                    <input id="emplUuid" name="emplUuid" class="form-control" disabled="true"
+                                           data-parsley-trigger="change" data-rule-requiredEx="true">
+                                    </input>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-2 control-label">*请假类型：</label>
+                                <table >
+                                    <tbody>
+                                        <tr >
+                                            <td class="col-lg-7">
+                                                <div class="radio radio-success single-row">
+                                                    <input type="radio" id="type1" name="type" value="1" checked="checked"/>
+                                                    <label id="labelType1" for="type1">年假（5小时可用）</label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="radio radio-success single-row">
+                                                    <input type="radio" id="type2" name="type" value="2"/>
+                                                    <label id="labelType2" for="type2">病假（5小时可用）</label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td  class="col-lg-7">
+                                                <div class="radio radio-success single-row">
+                                                    <input type="radio" id="type3" name="type" value="3"/>
+                                                    <label id="labelType3" for="type3">事假（5小时可用）</label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="radio radio-success single-row">
+                                                    <input type="radio" id="type4" name="type" value="4"/>
+                                                    <label id="labelType4" for="type4">调休（4小时可用）</label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="col-lg-7">
+                                                <div class="radio radio-success single-row">
+                                                    <input type="radio" id="type5" name="type" value="5"/>
+                                                    <label id="labelType5" for="type5">婚假（5小时可用）</label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="radio radio-success single-row">
+                                                    <input type="radio" id="type6" name="type" value="6"/>
+                                                    <label id="labelType6" for="type6">产假（5小时可用）</label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="col-lg-7">
+                                                <div class="radio radio-success single-row">
+                                                    <input type="radio" id="type7" name="type" value="7"/>
+                                                    <label id="labelType7" for="type7">丧假（5小时可用）</label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="radio radio-success single-row">
+                                                    <input type="radio" id="type8" name="type" value="8"/>
+                                                    <label id="labelType8" for="type8">陪护假（5小时可用）</label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="col-lg-7">
+                                                <div class="radio radio-success single-row">
+                                                    <input type="radio" id="typeA" name="type" value="A"/>
+                                                    <label id="labelTypeA" for="typeA">其他</label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-2 control-label">*开始时间：</label>
+                                <div class="col-md-4">
+                                    <div data-date="2016-12-21T15:25:00Z" class="input-group date form_datetime-adv">
+                                        <input id="beginDate" name="beginDate" type="text" value="2016-06-15 9:00"
+                                               class="form-control" readonly="" size="16">
+                                        <div class="input-group-btn">
+                                            <button type="button" class="btn btn-primary date-reset"><i
+                                                        class="fa fa-times"></i></button>
+                                            <button type="button" class="btn btn-success date-set"><i
+                                                        class="fa fa-calendar"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-2 control-label">*结束时间：</label>
+                                <div class="col-md-4">
+                                    <div data-date="2016-12-21T15:25:00Z" class="input-group date form_datetime-adv">
+                                        <input id="endDate" name="endDate" type="text" value="2016-06-15 18:00"
+                                               class="form-control" readonly="" size="16">
+                                        <div class="input-group-btn">
+                                            <button type="button" class="btn btn-primary date-reset"><i
+                                                        class="fa fa-times"></i></button>
+                                            <button type="button" class="btn btn-success date-set"><i
+                                                        class="fa fa-calendar"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-2 control-label">请假事由：</label>
+                                <div class="col-lg-5">
+                                    <textarea id="leaveDesc" name="leaveDesc" class="form-control" maxlength="255"
+                                              data-rule-maxlength="255"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ibox">
+                    <div class="ibox-content">
+                        <div class="form-horizontal">
+                            <div class="form-group m-b-none">
+                                <div class="col-lg-10 col-lg-offset-2">
+                                    <a href="javascript:;" id="confirm" onclick="submitLeave()" class="btn btn-primary">提交</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<link href="/bootstrap/css/bootstrap.theme.min.css" rel="stylesheet">
+<!--pickers css-->
+<link rel="stylesheet" type="text/css" href="/bootstrap/js/bootstrap-datepicker/css/datepicker-custom.css"/>
+<link rel="stylesheet" type="text/css" href="/bootstrap/js/bootstrap-timepicker/css/timepicker.css"/>
+<link rel="stylesheet" type="text/css" href="/bootstrap/js/bootstrap-colorpicker/css/colorpicker.css"/>
+<link rel="stylesheet" type="text/css" href="/bootstrap/js/bootstrap-daterangepicker/daterangepicker-bs3.css"/>
+<link rel="stylesheet" type="text/css" href="/bootstrap/js/bootstrap-datetimepicker/css/datetimepicker-custom.css"/>
+
+<link href="/bootstrap/css/style.css" rel="stylesheet">
+<link href="/bootstrap/css/style-responsive.css" rel="stylesheet">
+
+<!-- Placed js at the end of the document so the pages load faster -->
+<script src="/bootstrap/js/jquery-1.10.2.min.js"></script>
+<script src="/bootstrap/js/jquery-ui-1.9.2.custom.min.js"></script>
+<script src="/bootstrap/js/jquery-migrate-1.2.1.min.js"></script>
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+<script src="/bootstrap/js/modernizr.min.js"></script>
+<script src="/bootstrap/js/jquery.nicescroll.js"></script>
+
+<!--pickers plugins-->
+<script type="text/javascript" src="/bootstrap/js/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="/bootstrap/js/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+<script type="text/javascript" src="/bootstrap/js/bootstrap-daterangepicker/moment.min.js"></script>
+<script type="text/javascript" src="/bootstrap/js/bootstrap-daterangepicker/daterangepicker.js"></script>
+<script type="text/javascript" src="/bootstrap/js/bootstrap-colorpicker/js/bootstrap-colorpicker.js"></script>
+<script type="text/javascript" src="/bootstrap/js/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
+
+<!--pickers initialization-->
+<script src="/bootstrap/js/pickers-init.js"></script>
+<!--common scripts for all pages-->
+<script src="/bootstrap/js/scripts.js"></script>
+
+<script>
+        var leave_userInfo;
+    function initView() {
+        $.ajax({
+            type: "POST",
+            url: "/leave/api/getSelfUserInfo",
+            datatype: "json",
+            success: function (data) {
+                var status = data['status'];
+                var result = data['data'];
+                if ((status !== 1) || !result) {
+                    alert('数据加载失败！');
+                    return;
+                }
+                leave_userInfo = result;
+                var avaiAnnLev = (result['annualLeave'] ? result['annualLeave'] : 0) - (result['annualLeaveUsed'] ? result['annualLeaveUsed'] : 0);
+                var avaiSickLev = (result['sickLeave'] ? result['sickLeave'] : 0) - (result['sickLeaveUsed'] ? result['sickLeaveUsed'] : 0);
+                var avaiBusLev = (result['businessLeave'] ? result['businessLeave'] : 0) - (result['businessLeaveUsed'] ? result['businessLeaveUsed'] : 0);
+                var avaiTrfLev = (result['transferLeave'] ? result['transferLeave'] : 0) - (result['transferLeaveUsed'] ? result['transferLeaveUsed'] : 0);
+                var avaiMrgLev = (result['marriageLeave'] ? result['marriageLeave'] : 0) - (result['marriageLeaveUsed'] ? result['marriageLeaveUsed'] : 0);
+                var avaiMttLev = (result['maternityLeave'] ? result['maternityLeave'] : 0) - (result['maternityLeaveUsed'] ? result['maternityLeaveUsed'] : 0);
+                var avaiBrmLev = (result['bereavementLeave'] ? result['bereavementLeave'] : 0) - (result['bereavementLeaveUsed'] ? result['bereavementLeaveUsed'] : 0);
+                var avaiNrsLev = (result['nursesLeave'] ? result['nursesLeave'] : 0) - (result['nursesLeaveUsed'] ? result['nursesLeaveUsed'] : 0);
+                var avaiOthLev = (result['otherLeave'] ? result['otherLeave'] : 0) - (result['otherLeaveUsed'] ? result['otherLeaveUsed'] : 0);
+                document.getElementById('type1').innerHTML = document.getElementById("emplUuid").value = result['displayName'];
+                document.getElementById('labelType1').innerText = "年假（" + avaiAnnLev + "小时可用）";
+                document.getElementById('labelType2').innerText = "病假（" + avaiSickLev + "小时可用）";
+                document.getElementById('labelType3').innerText = "事假（" + avaiBusLev + "小时可用）";
+                document.getElementById('labelType4').innerText = "调休（" + avaiTrfLev + "小时可用）";
+                document.getElementById('labelType5').innerText = "婚假（" + avaiMrgLev + "小时可用）";
+                document.getElementById('labelType6').innerText = "产假（" + avaiMttLev + "小时可用）";
+                document.getElementById('labelType7').innerText = "丧假（" + avaiBrmLev + "小时可用）";
+                document.getElementById('labelType8').innerText = "陪护假（" + avaiNrsLev + "小时可用）";
+                document.getElementById('labelTypeA').innerText = "其他（" + avaiOthLev + "小时可用）";
+            },
+            error: function (error) {
+                alert('数据请求出错！,error:' + JSON.stringify(error));
+            }
+        });
+    }
+    initView();
+    function submitLeave() {
+        var beginTimeStr = $("#beginDate").val();
+        var endTimeStr = $("#endDate").val();
+        var type = $('input:radio:checked').val();
+        var desc = $('#leaveDesc').val();
+        if (!beginTimeStr || !endTimeStr || !type || !desc) {
+            alert('信息请填写完整！');
+            return;
+        }
+        var beginTime = (new Date(beginTimeStr  + ":00")).getTime();
+        var endTime = (new Date(endTimeStr + ":00")).getTime();
+        var requestParams = {
+            uid: leave_userInfo['uid'],
+            belToGid: leave_userInfo['belToGid'],
+            leadGid: leave_userInfo['leadGid'],
+            beginTime: beginTime,
+            endTime: endTime,
+            type: type,
+            desc: desc
+        };
+        $.ajax({
+            type: "POST",
+            url: "/leave/api/addLeaveInfo",
+            dataType: "json",
+            data: requestParams,
+            success: function (data) {
+                var status = data['status'];
+                var msg = data['msg'];
+                alert(msg);
+            },
+            error: function (error) {
+                alert('数据请求出错！,error:' + JSON.stringify(error));
+            }
+        })
+    }
+</script>

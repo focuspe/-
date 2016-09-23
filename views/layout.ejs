@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="keywords" content="admin, dashboard, bootstrap, template, flat, modern, theme, responsive, fluid, retina, backend, html5, css, css3">
+    <meta name="description" content="">
+    <meta name="author" content="ThemeBucket">
+    <link rel="shortcut icon" href="#" type="image/png">
+
+    <title>请假管理系统</title>
+
+    <!--pickers css-->
+    <link rel="stylesheet" type="text/css" href="/bootstrap/js/bootstrap-datepicker/css/datepicker-custom.css" />
+    <link rel="stylesheet" type="text/css" href="/bootstrap/js/bootstrap-timepicker/css/timepicker.css" />
+    <link rel="stylesheet" type="text/css" href="/bootstrap/js/bootstrap-colorpicker/css/colorpicker.css" />
+    <link rel="stylesheet" type="text/css" href="/bootstrap/js/bootstrap-daterangepicker/daterangepicker-bs3.css" />
+    <link rel="stylesheet" type="text/css" href="/bootstrap/js/bootstrap-datetimepicker/css/datetimepicker-custom.css" />
+
+
+    <!--icheck-->
+    <link href="/bootstrap/js/iCheck/skins/minimal/minimal.css" rel="stylesheet">
+    <link href="/bootstrap/js/iCheck/skins/square/square.css" rel="stylesheet">
+    <link href="/bootstrap/js/iCheck/skins/square/red.css" rel="stylesheet">
+    <link href="/bootstrap/js/iCheck/skins/square/blue.css" rel="stylesheet">
+
+
+    <!--dashboard calendar-->
+    <link href="/bootstrap/css/clndr.css" rel="stylesheet">
+
+
+
+    <!--common-->
+    <link href="/bootstrap/css/style.css" rel="stylesheet">
+    <link href="/bootstrap/css/style-responsive.css" rel="stylesheet">
+    <script src="/bootstrap/js/jquery-1.10.2.min.js"></script>
+
+
+
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/bootstrap/js/html5shiv.js"></script>
+    <script src="/bootstrap/js/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body class="sticky-header">
+
+<section>
+
+    <%- partial('left.ejs') %>}
+
+    <!-- main content start-->
+    <div class="main-content" >
+
+
+        <%- partial('top.ejs') %>
+
+
+        <!--body wrapper start-->
+        <div class="wrapper">
+            <%- body %>
+        </div>
+        <!--body wrapper end-->
+
+        <!--&lt;!&ndash;footer section start&ndash;&gt;-->
+        <!--<footer>-->
+            <!--2016 &copy; 上海小迪信息科技有限公司-->
+        <!--</footer>-->
+        <!--&lt;!&ndash;footer section end&ndash;&gt;-->
+
+    </div>
+    <!-- main content end-->
+</section>
+
+<!-- Placed js at the end of the document so the pages load faster -->
+<script src="/bootstrap/js/jquery-migrate-1.2.1.min.js"></script>
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+<script src="/bootstrap/js/modernizr.min.js"></script>
+<script src="/bootstrap/js/jquery.nicescroll.js"></script>
+
+
+<!--common scripts for all pages-->
+<script src="/bootstrap/js/scripts.js"></script>
+
+
+</body>
+</html>

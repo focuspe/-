@@ -1,0 +1,55 @@
+{
+  "LDAPOPTS": {
+    "server": {
+		"url": "ldap://10.0.0.8:389",
+        "bindDn": "uid=yoda,cn=users,dc=lobot,dc=daemonrob,dc=com",
+        "adminDn": "yoda",
+        "adminPassword": "guyou123",
+        "searchBase": "cn=users,dc=lobot,dc=daemonrob,dc=com",
+        "searchFilter": "(uid={{username}})"
+    }
+  },
+  "mongodb": {
+    "uri":"mongodb://admin:xiaodi305A@10.0.0.10:28017/xdmgt,mongodb://admin:xiaodi305A@10.0.0.10:28018/xdmgt,mongodb://admin:xiaodi305A@10.0.0.10:28019/xdmgt'",
+    "options": {
+      "auth":{"authdb":"admin"}
+    }
+  },
+  "sessionOPTS": {
+    "secret": "ldap secret",
+    "resave": false,
+    "saveUninitialized": true,
+    "cookie": {
+      "httpOnly": true,
+      "maxAge": 2419200000
+    }
+  },
+  "mail":{
+		"user":"xiaoditec@daemonrob.com",
+		"pass":"xiaodi123"
+  },
+  "redis":{
+    "port":6380,
+    "host":"www.daemonrob.com",
+    "password":"guyou@305A",
+    "connectionName":"atlasuser",
+    "db":1
+  },
+  "excel_file":{
+    "availableLeaves":"available_leaves_",
+    "festivalExport":"festival_export_",
+    "filePath":"D:\\tmp",
+    "extension_name":".xlsx"
+  },
+  "email_template":{
+    "leave_add":{
+      "subject":"staffUserName的请假申请",
+      "content":"<p style=\"text-indent:2em;\">你好，leaderUserName：<br /><span><br /></span></p><p style=\"text-indent:2em;\"><span>&nbsp; &nbsp; staffUserName提交了请假单，请您审批。</span></p><p style=\"text-indent:2em;\"><span><br /></span></p><p style=\"text-indent:2em;\"> &nbsp; &nbsp; 您可以进入<a href=\"http://10.0.1.207:3000/leave/manage\" target=\"_blank\">请假管理</a>查看和审批/p>\""
+    },
+    "leave_agree":{
+      "subject":"leaderUserName已批准您的请假",
+      "content":"<p style=\"text-indent:2em;\">你好，staffUserName：<br /><span><br /></span></p><p style=\"text-indent:2em;\"><span>&nbsp; &nbsp; leaderUserName已经批准了您的请假。</span></p><p style=\"text-indent:2em;\"><span><br /></span></p><p style=\"text-indent:2em;\"> &nbsp; &nbsp; 您可以进入<a href=\"http://10.0.1.207:3000/leave/manage\" target=\"_blank\">请假管理</a>查看</p>\""
+    }
+
+  }
+}

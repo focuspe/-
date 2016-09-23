@@ -1,0 +1,287 @@
+<div class="page-heading" xmlns="http://www.w3.org/1999/html" style="padding: 6px">
+    <h3><span id="breadcrumbsTitle">用户请求log</span></h3>
+    <ul class="breadcrumb">
+        <li>
+            <a href="/">首页</a>
+        </li>
+        <li>
+            考勤管理
+        </li>
+        <li class="active">
+            用户请求log
+        </li>
+    </ul>
+    <div class="col-lg-8" style="position: absolute; left: 25%;z-index: 1045;display: none;" id="show_opLog_form">
+        <div>
+            <div class = "col-lg-7">
+                <section class="panel">
+                    <header class="panel-heading">
+                        筛选
+                    </header>
+
+                <div class="panel-body">
+                    <div class="form">
+                        <form class="form-horizontal" id="">
+                            <div class="form-group">
+                                <label class="control-label col-lg-3"><strong>姓名：</strong></label>
+                                    <div class="col-lg-9">
+                                        <div class="input-group input-large custom-date-range">
+                                            <input type="text" class="form-control" id="opLog_uName" />
+                                         </div>
+                                    </div>
+                                </div>
+                            <div class="form-group">
+                            <label class="control-label col-lg-3" style="white-space: nowrap"><strong>开始时间：</strong></label>
+                                <div class="col-lg-9">
+                                    <div class="input-group input-large custom-date-range" data-date="13/07/2013" data-date-format="mm/dd/yyyy">
+                                        <input type="text" class="form-control dpd1" name="from" id="fromTime">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-lg-3" style="white-space: nowrap"><strong>结束时间：</strong></label>
+                                <div class="col-lg-9">
+                                    <div class="input-group input-large custom-date-range" data-date="13/07/2013" data-date-format="mm/dd/yyyy">
+                                        <input type="text" class="form-control dpd2" name="to" id="toTime">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-offset-2 col-lg-10" style="text-align: center">
+                                    <button onclick="opLogTableReload()" class="btn btn-search" type="button">查询</button>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;
+                                    <button class="btn btn-default" type="button" id="show_opLog_cancel">取消</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-lg-12">
+    <div class="panel panel-default">
+        <div class="panel-body" style="padding: 0 15px">
+            <div class="tab-content">
+                <div class="tab-pane fade in active">
+                        <!-- /.row -->
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="panel panel-default">
+                                    <!-- /.panel-heading -->
+                                <div class="panel-body" style="padding: 0 15px">
+                                    <div class="form-group">
+                                        <table id="opLog_table"
+                                               class="display table table-bordered table-striped" style="margin-bottom: 0px">
+                                            <thead class="cf">
+                                            <tr>
+                                                <th style="text-align: center">姓名</th>
+                                                <th style="text-align: center">API</th>
+                                                <th style="white-space: nowrap;text-align: center">请求函数</th>
+                                                <th style="text-align: center">返回值</th>
+                                                <th style="text-align: center">时间</th>
+                                            </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                        <!-- /.table-responsive -->
+                                </div>
+                                    <!-- /.panel-body -->
+                            </div>
+                                <!-- /.panel -->
+                        </div>
+                            <!-- /.col-lg-12 -->
+                    </div>
+                        <!-- /.row -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div style="width:100%;position: absolute; background-color: #000;opacity: 0.5;filter: alpha(opacity=50); z-index:1043;left: 0;top:0; display: none;" id="block_div"></div>
+
+
+
+<!-- Placed js at the end of the document so the pages load faster -->
+<script src="/bootstrap/js/data-tables/jquery.dataTables.min.js"></script>
+<script src="/bootstrap/js/advanced-datatable/js/dataTables.bootstrap.min.js"></script>
+<script src="/js/common.js"></script>
+
+
+<!--pickers plugins-->
+<script type="text/javascript" src="/bootstrap/js/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="/bootstrap/js/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+<script type="text/javascript" src="/bootstrap/js/bootstrap-daterangepicker/moment.min.js"></script>
+<script type="text/javascript" src="/bootstrap/js/bootstrap-daterangepicker/daterangepicker.js"></script>
+<script type="text/javascript" src="/bootstrap/js/bootstrap-colorpicker/js/bootstrap-colorpicker.js"></script>
+<script type="text/javascript" src="/bootstrap/js/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
+
+
+<!--pickers initialization-->
+<script src="/bootstrap/js/pickers-init.js"></script>
+
+
+
+<script>
+
+    var opLogTable = null;
+    function opLogTableReload() {
+        opLogTable.dataTable().api().ajax.reload();
+        $("#block_div").hide();
+        $("#show_opLog_form").hide();
+    }
+    var initPriceViewDataTable = function () {
+        var generateOperationTDContent = function (primaryKeyValue) {
+            //'<a class="cursor-pointer btn-default" data-targetid="' + primaryKeyValue + '" onclick="delete_contactPerson(this)" href="#"><i  class="fa fa-archive">删除</i></a> '+
+            return
+        };
+        var searchPriceContact = function (data,callback,settings) {
+            var pageNo = (data.start / data.length) + 1;
+            var pageSize = data.length;
+            var displayName = $("#opLog_uName").val()
+            var requestData = {};
+//将mm/dd/yyyy格式的时间转换为yyyy mm dd,再转换为时间戳
+            var time1 = $("#fromTime").val();
+            var time2 = $("#toTime").val();
+            var time3 = time1[6]+time1[7]+time1[8]+time1[9]+" "+time1[0]+time1[1]+" "+time1[3]+time1[4];
+            console.log(time3);
+            var time4 = time2[6]+time2[7]+time2[8]+time2[9]+" "+time2[0]+time2[1]+" "+time2[3]+time2[4];
+            var startTime = (new Date(time3)).getTime();
+            var endTime = (new Date(time4)).getTime();
+            console.log(startTime);
+            console.log(endTime);
+
+            if (displayName && displayName != "" && displayName != "undefined") {
+                requestData.userName = displayName;
+            }
+            if(time1 && time2 && time1 <= time2){
+                requestData.startTime = startTime;
+                requestData.endTime = endTime;
+            }
+            else if ((new Date()).getTime() < startTime){
+                alert("时间还没到");
+            }
+            else if (time1 && time2 && time1 > time2){
+                alert("起始时间应不大于结束时间");
+            }
+            requestData.pageNo = pageNo;
+            requestData.pageSize = pageSize;
+            $.ajax({
+                type: "post",
+                url: "/opLog/api/get",
+                data: requestData,
+                dataType: "json",
+                success: function (response) {
+                    if (response.status == 1){
+                        for(var i = 0 ;i< response.data.length;i++){
+//                            response.data[i]["longTime"] = parseInt((parseInt(response.data[i].endTime)- parseInt(response.data[i].startTime))/10/60/60)/100+"小时";
+//                            response.data[i]["startTime"] = format(response.data[i]["startTime"],"yyyy-MM-dd HH:mm:ss");
+                            response.data[i]["createTime"] = format(response.data[i]["createTime"],"yyyy-MM-dd HH:mm:ss");
+                            response.data[i]["res_short"] = response.data[i]["res"].substring(0,100)+"...";
+                            response.data[i]["res"] =  response.data[i]["res"].replace(/'/g,"’");
+                        }
+                        var datatableColsParams = [
+                            {"key":"userName","editable":false},
+                            {"key":"API","editable":false},
+                            {"key":"req","editable":false},
+                            {"key":"res_short","editable":false},
+                            {"key": "res", "editable": false, "isPrimaryKey": true,hidden: true},
+                            {"key":"createTime","editable":false}
+                        ];
+                        var aaData = generateDataForDatatable(response.data,datatableColsParams,generateOperationTDContent)
+                        var formatDataTable = {
+                            "iTotalRecords":response.total,
+                            "iTotalDisplayRecords":response.total,
+                            "aaData":aaData
+                        };
+
+                        callback(formatDataTable);
+                        $("table tr td:nth-child(4)").bind("click",function(){
+                            var text = $(this).text();
+                            if(text.indexOf("...") != -1){
+                                $(this).text($(this).prev().find("input").attr("data-targetid"));
+                            }else{
+                                $(this).text(text.substring(0,100)+"...");
+                            }
+                        });
+                    }
+                },
+                error:function (data) {
+                    printAjaxError(data);
+                }
+            });
+        }
+        opLogTable = $('#opLog_table').dataTable({
+            "sScrollX":"100%",
+            "sSrollXInner":"100%",
+            "bScrollCollapse":true,
+            "bPaginate":true,
+            "bProcessing":true,
+            "bLengthChange":true,
+            "bFilter":true,
+            "bSort":true,
+            "bInfo":true,
+            "bAutoWidth":false,
+            "aLengthMenu":[
+                [10,20,50,10000],
+                [10,20,50,"All"]
+            ],
+            "iDisplayLength":10,
+            "bStateSave":false,
+            "sPaginationType":"full_numbers",
+            "oLanguage": {
+                "sLengthMenu": "每页显示 _MENU_ 条记录",
+                "sZeroRecords": "对不起，查询不到任何相关数据",
+                "sInfo": "当前显示 _START_ 到 _END_ 条，共 _TOTAL_ 条记录",
+                "sInfoEmtpy": "找不到相关数据",
+                "sInfoFiltered": "数据表中共为 _MAX_ 条记录",
+                "sProcessing": "正在加载中...",
+                "sSearch": ' <div style="width: 60px;border: 1px solid #1ab394;text-align: center;height: 25px;color:#1ab394" onclick="opLog_filter(this)" ><i class="fa fa-filter" style="cursor: pointer">筛选</i> </div>',
+                "sUrl": "", //多语言配置文件，可将oLanguage的设置放在一个txt文件中，例：Javascript/datatable/dtCH.txt
+                "oPaginate": {
+                    "sFirst": "第一页",
+                    "sPrevious": " 上一页 ",
+                    "sNext": " 下一页 ",
+                    "sLast": " 最后一页 "
+                }
+            }, //多语言配置
+            "aoColumnDefs": [{
+                'bSortable': false,
+                'aTargets': [0]
+            }],
+            "ajax": function (data, callback, settings) {
+                searchPriceContact(data, callback, settings)
+            },
+            "serverSide": true,//让服务器端实现分页,必须将此项设为true
+            "processing": true
+        });
+    }
+
+    function opLog_filter(obj) {
+        $("#show_opLog_form").css({'top':"10%"}).show();
+        $("#block_div").css({'height':$(document).height()}).show();
+    }
+
+    $("#show_opLog_cancel").bind('click',function () {
+        $("#block_div").hide();
+        $("#show_opLog_form").hide();
+    })
+
+
+
+    $(document).ready(function () {
+        initPriceViewDataTable();
+        $('#opLog_table_filter input').hide();
+        $("#opLog_table_filter div").hover(function(){
+            $("#opLog_table_filter div").css({"background-color":"#1ab394","color":"#fff"});
+        },function(){
+            $("#opLog_table_filter div").css({"background-color":"#fff","color":"#1ab394"});
+        });
+    })
+
+
+</script>

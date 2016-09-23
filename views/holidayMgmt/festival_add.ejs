@@ -1,0 +1,231 @@
+
+<!-- page heading start-->
+<div class="page-heading">
+    <ul class="breadcrumb">
+        <li>
+            <a href="/">首页</a>
+        </li>
+        <li>
+            <a href="#">节假日信息管理</a>
+        </li>
+        <li class="active">
+            添加
+        </li>
+    </ul>
+</div>
+<!-- page heading end-->
+
+<div id="festival_msg_zone">
+</div>
+
+<section id="wrapper">
+    <div class="row">
+        <div class="col-md-12">
+            <section class="panel">
+                <header class="panel-heading">节假日信息添加</header>
+                <div class="panel-body">
+                    <form class="form-horizontal" id="festival_add_form">
+                        <div class="form-group">
+                            <label class="control-label col-md-2">日期</label>
+                            <div class="col-md-4 col-xs-11">
+                                <input id="featival_date" name="featival_date" class="form-control form-control-inline input-medium default-date-picker"  size="16" type="text" value="2016-09-05" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-2">标题</label>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" id="festival_title" name="festival_title">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-2">类型</label>
+                            <div class="col-md-1">
+                                <label><input name="festival_type" type="radio" value=0 checked />法定假日</label>
+                            </div>
+                            <div class="col-md-1">
+                                <label><input name="festival_type" type="radio" value=1 />公司假日</label>
+                            </div>
+                            <p class="help-block" style="display:none">此项不能为空</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-2">说明</label>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" id="festival_comments" name="festival_comments">
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </section>
+            <!-- end of panel -->
+        </div>
+    </div>
+    <!-- row end -->
+
+    <!-- row start -->
+    <div class="row">
+        <div class="col-md-12">
+            <section class="panel">
+                <div class="panel-body">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <label class="control-label col-md-2"></label>
+                                <div class="col-md-2">
+                                    <a href="#" class="btn btn-success" onclick="addRecord()">保存</a>
+                                </div>
+                                <div class="col-md-2">
+                                    <a href="/festival/manage" class="btn btn-danger">取消</a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <section>
+                <!-- end of panel -->
+        </div>
+    </div>
+    <!-- row end -->
+
+
+
+<link href="/bootstrap/css/bootstrap.theme.min.css" rel="stylesheet">
+<!--pickers css-->
+<link rel="stylesheet" type="text/css" href="/bootstrap/js/bootstrap-datepicker/css/datepicker-custom.css"/>
+<link rel="stylesheet" type="text/css" href="/bootstrap/js/bootstrap-timepicker/css/timepicker.css"/>
+<link rel="stylesheet" type="text/css" href="/bootstrap/js/bootstrap-colorpicker/css/colorpicker.css"/>
+<link rel="stylesheet" type="text/css" href="/bootstrap/js/bootstrap-daterangepicker/daterangepicker-bs3.css"/>
+<link rel="stylesheet" type="text/css" href="/bootstrap/js/bootstrap-datetimepicker/css/datetimepicker-custom.css"/>
+
+<link href="/bootstrap/css/style.css" rel="stylesheet">
+<link href="/bootstrap/css/style-responsive.css" rel="stylesheet">
+
+<!-- Placed js at the end of the document so the pages load faster -->
+<script src="/bootstrap/js/jquery-1.10.2.min.js"></script>
+<script src="/bootstrap/js/jquery-ui-1.9.2.custom.min.js"></script>
+<script src="/bootstrap/js/jquery-migrate-1.2.1.min.js"></script>
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+<script src="/bootstrap/js/modernizr.min.js"></script>
+<script src="/bootstrap/js/jquery.nicescroll.js"></script>
+
+<!--pickers plugins-->
+<script type="text/javascript" src="/bootstrap/js/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="/bootstrap/js/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+<script type="text/javascript" src="/bootstrap/js/bootstrap-daterangepicker/moment.min.js"></script>
+<script type="text/javascript" src="/bootstrap/js/bootstrap-daterangepicker/daterangepicker.js"></script>
+<script type="text/javascript" src="/bootstrap/js/bootstrap-colorpicker/js/bootstrap-colorpicker.js"></script>
+<script type="text/javascript" src="/bootstrap/js/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
+<script type="text/javascript" src="/bootstrap/js/bootstrapValidator.min.js"></script>
+<script src="/js/common.js"></script>
+<script type="text/javascript" src="/js/xd_function.js"></script>
+
+<!--pickers initialization-->
+<script src="/bootstrap/js/pickers-init.js"></script>
+<!--common scripts for all pages-->
+<script src="/bootstrap/js/scripts.js"></script>
+
+
+   
+<script>
+    var addRecordURL = "/festival/api/add";
+
+    function initMsg(){
+        $("#festival_msg_zone").html('\
+        <div class="alert alert-block alert-danger fade in hide">\
+            <button type="button" class="close close-sm" data-dismiss="alert">\
+                <i class="fa fa-times"></i>\
+            </button>\
+            <strong>错误！</strong> 红色项不能为空\
+        </div>');
+    }
+    //TODO
+    var localData = {};
+
+    function isFormValHasError(){
+        var hasError = false;
+        if(isInputValEmpty("festival_comments")){hasError=true;}
+        if(isInputValEmpty("festival_title")){hasError=true;}
+        return hasError;
+    }
+
+    function initData(){
+
+        var date = $("#featival_date").val();
+        var type = $('input[name="festival_type"]:checked').val();
+        var title = $("#festival_title").val();
+        var isDelete =false;
+        var comments = $("#festival_comments").val();
+        var cur = new Date(date.replace(/-/,"/"));
+        var data = {
+            date: cur.getTime(),
+            type: type,
+            isDelete: isDelete,
+            title: title,
+            comments: comments
+        };
+        return data;
+    }
+
+    function addRecord(){
+        if(!isFormValHasError()){
+            return;
+        }
+        var requestData = initData();
+        $.ajax({
+            type: "POST",
+            url: addRecordURL,
+            dataType: "json",
+            data: requestData,
+            success: function (response) {
+                if (typeof(response.status) != undefined && response.status == 1) {
+                    alert("返回信息"+response.msg);
+                } else {
+                    alert("返回信息"+response.msg);
+                }
+            },
+            error: function (data) {
+                printAjaxError(data);
+            }
+        });
+    }
+
+    function initValidation(){
+        $('#festival_add_form').bootstrapValidator({
+            message: 'This value is not valid',
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                festival_title: {
+                    validators: {
+                        notEmpty: {
+                            message: '标题不能为空'
+                        }
+                    }
+                },
+                festival_comments: {
+                    validators: {
+                        notEmpty: {
+                            message: '说明不能为空'
+                        }
+                    }
+                }
+            }
+        }).on('success.form.bv', function(e) {
+            e.preventDefault();
+            $('#js-nav-tab li').each(function(){
+                $('#js-nav-tab li').addClass('hide');
+            })
+        });
+    }
+
+
+    $(document).ready(function () {
+        initValidation();
+    });
+</script>

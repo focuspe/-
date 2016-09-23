@@ -1,0 +1,394 @@
+<div class="page-heading">
+    <ul class="breadcrumb">
+        <li>
+            <a href="/">首页</a>
+        </li>
+        <li>
+            <a href="#">考勤管理</a>
+        </li>
+        <li class="active">
+            用户信息管理
+        </li>
+    </ul>
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="tab-content">
+                    <div class="tab-pane fade in active">
+
+                        <!-- /.row -->
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="panel panel-default">
+                                    <!-- /.panel-heading -->
+                                    <div class="panel-body">
+                                        <div class="form-group">
+                                            <table id="userInfo_manage_table"
+                                                   class="display table table-bordered table-striped" style="margin-bottom: 0px">
+                                                <thead class="cf">
+                                                <tr>
+                                                    <th>操作</th>
+                                                    <th>姓名</th>
+                                                    <th>邮箱</th>
+                                                    <th>管理组</th>
+                                                    <th>归属组</th>
+                                                    <th>年假</th>
+                                                    <th>事假</th>
+                                                    <th>产假</th>
+                                                    <th>病假</th>
+                                                    <th>调休假</th>
+                                                    <th>婚假</th>
+                                                    <th>丧假</th>
+                                                    <th>备注</th>
+                                                </tr>
+                                                </thead>
+                                            </table>
+                                        </div>
+                                        <!-- /.table-responsive -->
+                                    </div>
+                                    <!-- /.panel-body -->
+                                </div>
+                                <!-- /.panel -->
+                            </div>
+                            <!-- /.col-lg-12 -->
+                        </div>
+                        <!-- /.row -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="col-lg-8 " style="position: absolute;left:25%;  z-index:1045;  display: none;"  id="edit_userInfo_form">
+    <div>
+        <div class="col-lg-7">
+            <section class="panel">
+                <header class="panel-heading">
+                    用户信息编辑
+                </header>
+                <div class="panel-body">
+                    <div class=" form">
+                        <form class="form-horizontal" id="">
+                            <div class="form-group ">
+                                <label  class="control-label col-lg-2">用户名</label>
+                                <input class=" form-control" name = "_id" type="text"   id="_id" style="display: none"/>
+                                <div class="col-lg-10">
+                                    <input class=" form-control" name ="displayName"   id="displayName" type="text"/>
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label class="control-label col-lg-2">邮箱</label>
+                                <div class="col-lg-10">
+                                    <input class=" form-control" name="mail"  id="mail" type="text" readonly/>
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label class="control-label col-lg-2">管理组</label>
+                                <div class="col-lg-10">
+                                    <input class=" form-control" name="leadGid" id="leadGid" type="text"/>
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label class="control-label col-lg-2">归属组</label>
+                                <div class="col-lg-10">
+                                    <input class=" form-control" name="belToGid" id="belToGid" type="text"/>
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label class="control-label col-lg-2">年假</label>
+                                <div class="col-lg-10">
+                                    <input class=" form-control" name="annualLeave" type="number"  id="annualLeave"/>
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label class="control-label col-lg-2">事假</label>
+                                <div class="col-lg-10">
+                                    <input class=" form-control" name="businessLeave" type="number" id="businessLeave"/>
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label  class="control-label col-lg-2">产假</label>
+                                <div class="col-lg-10">
+                                    <input class=" form-control" name="maternityLeave" type="number" id="maternityLeave"/>
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label  class="control-label col-lg-2">病假</label>
+                                <div class="col-lg-10">
+                                    <input class=" form-control" name="sickLeave" type="number" id="sickLeave"/>
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label  class="control-label col-lg-2">调休假</label>
+                                <div class="col-lg-10">
+                                    <input class=" form-control" name="transferLeave" type="number" id="transferLeave"/>
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label  class="control-label col-lg-2">婚假</label>
+                                <div class="col-lg-10">
+                                    <input class=" form-control" name="marriageLeave" id="marriageLeave" type="number"/>
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label  class="control-label col-lg-2">丧假</label>
+                                <div class="col-lg-10">
+                                    <input class=" form-control" name="bereavementLeave" id="bereavementLeave"  type="number"/>
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label for="ccomment" class="control-label col-lg-2">备注</label>
+                                <div class="col-lg-10">
+                                    <textarea class="form-control " name="desc" id="desc" ></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-offset-2 col-lg-10" style="text-align: center">
+
+                                    <input class="btn btn-primary" value="确定" type="button" id="submit_user_info"/>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                                    <button class="btn btn-default" type="button" id="edit_user_info_cancel">取消</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+<div style="width:100%;position: absolute; background-color: #000;opacity: 0.5;filter: alpha(opacity=50); z-index:1043;left: 0;top:0; display: none;" id="block_div"></div>
+
+
+<script src="/bootstrap/js/data-tables/jquery.dataTables.min.js"></script>
+<script src="/bootstrap/js/advanced-datatable/js/dataTables.bootstrap.min.js"></script>
+<script src="/js/common.js"></script>
+
+<script>
+
+    var userInfo = {
+        _id:"",
+        displayName:"",
+        mail:"",
+        leadGid:"",
+        belToGid:"",
+        annualLeave: 0,//年假,
+        businessLeave:0,//事假
+        maternityLeave: 0,//产假
+        sickLeave: 0,//病假
+        transferLeave: 0,//调休假,
+        marriageLeave: 0,//婚假
+        bereavementLeave: 0,//丧假
+        desc:""
+    }
+
+    var userInfoTable = null;
+    function userInfoTableReload() {
+        userInfoTable.dataTable().api().ajax.reload();
+    }
+
+    var initPriceViewDataTable = function() {
+        var generateOperationTDContent = function (primaryKeyValue) {
+            //'<a class="cursor-pointer btn-default" data-targetid="' + primaryKeyValue + '" onclick="delete_contactPerson(this)" href="#"><i  class="fa fa-archive">删除</i></a> '+
+            return    '<a class="cursor-pointer btn-default" data-targetid="' + primaryKeyValue + '" onclick="editPageShow(this)" href="#"><i  class="fa fa-edit">编辑</i></a> ' ;
+        };
+
+        var searchPriceContact = function (data, callback, settings) {
+            var pageNo = (data.start/data.length)+1;
+            var pageSize = data.length;
+            var username = $("#userInfo_manage_table_filter input").val()
+            var requestData = {};
+            if(username && username != "" && username !="undefined"){
+                requestData.displayName = username;
+            }
+            requestData.pageNo = pageNo;
+            requestData.pageSize = pageSize;
+            $.ajax({
+                type:"post",
+                url: "/userInfo/api/get",
+                data: requestData,
+                dataType: "json",
+                success: function (response) {
+                    if (response.status && response.status == 1) {
+                        var datatableColsParams = [
+                            {"key": "_id", "editable": false, "isPrimaryKey": true, hidden: true},
+                            {"key": "displayName", "editable": true },
+                            {"key": "mail", "editable": false},
+                            {"key": "leadGid", "editable": false},
+                            {"key": "belToGid", "editable": false},
+                            {"key": "annualLeave", "editable": false},
+                            {"key": "businessLeave", "editable": false},
+                            {"key": "maternityLeave", "editable": false},
+                            {"key": "sickLeave", "editable": false},
+                            {"key": "transferLeave", "editable": false},
+                            {"key": "marriageLeave", "editable": false},
+                            {"key": "bereavementLeave", "editable": false},
+                            {"key": "desc", "editable": true},
+                        ];
+                        var aaData = generateDataForDatatable(response.data, datatableColsParams, generateOperationTDContent);
+                        var formatDataTable = {
+                            "iTotalRecords": response.total,
+                            "iTotalDisplayRecords": response.total,
+                            "aaData": aaData
+                        };
+                        callback(formatDataTable);
+                    }
+                },
+                error: function (data) {
+                    printAjaxError(data);
+                }
+            });
+
+        }
+        userInfoTable = $('#userInfo_manage_table').dataTable({
+            "sScrollX": "100%", //表格的宽度
+            "sScrollXInner": "100%", //表格的内容宽度
+            "bScrollCollapse": true, //当显示的数据不足以支撑表格的默认的高度时，依然显示纵向的滚动条。(默认是false)
+            "bPaginate": true, //是否显示分页
+            "bProcessing": true,
+            "bLengthChange": true, //每页显示的记录数
+            "bFilter": true, //搜索栏
+            "bSort": true, //是否支持排序功能
+            "bInfo": true, //显示表格信息
+            "bAutoWidth": false, //自适应宽度
+            "aLengthMenu": [
+                [10, 20, 50, 10000],
+                [10, 20, 50, "All"] // change per page values here
+            ],
+            "iDisplayLength": 10,
+            //"sDom": "<'row'<'col-lg-6'l><'col-lg-6'f>r>t<'row'<'col-lg-6'i><'col-lg-6'p>>",
+            "bStateSave": false, //保存状态到cookie *************** 很重要 ， 当搜索的时候页面一刷新会导致搜索的消失。使用这个属性就可避免了
+            "sPaginationType": "full_numbers", //分页: simple,simple_numbers(默认), full或full_numbers
+            "oLanguage": {
+                "sLengthMenu": "每页显示 _MENU_ 条记录",
+                "sZeroRecords": "对不起，查询不到任何相关数据",
+                "sInfo": "当前显示 _START_ 到 _END_ 条，共 _TOTAL_ 条记录",
+                "sInfoEmtpy": "找不到相关数据",
+                "sInfoFiltered": "数据表中共为 _MAX_ 条记录",
+                "sProcessing": "正在加载中...",
+                "sSearch": "姓名：",
+                "sUrl": "", //多语言配置文件，可将oLanguage的设置放在一个txt文件中，例：Javascript/datatable/dtCH.txt
+                "oPaginate": {
+                    "sFirst": "第一页",
+                    "sPrevious": " 上一页 ",
+                    "sNext": " 下一页 ",
+                    "sLast": " 最后一页 "
+                }
+            }, //多语言配置
+            "aoColumnDefs": [{
+                'bSortable': false,
+                'aTargets': [0]
+            }],
+            "ajax": function (data, callback, settings) {
+                searchPriceContact(data, callback, settings);
+            },
+            "serverSide": true,//让服务器端实现分页,必须将此项设为true
+            "processing": true
+        });
+    }
+
+    var global_user_info_td;
+    function editPageShow(obj){
+        var _id = $(obj).attr("data-targetid");
+        var user_info_td = $(obj).parent().nextAll('td');
+        userInfo._id= _id;
+        userInfo.displayName=$(user_info_td[0]).text();
+        userInfo.mail=$(user_info_td[1]).text();
+        userInfo.leadGid=$(user_info_td[2]).text();
+        userInfo.belToGid=$(user_info_td[3]).text();
+        userInfo.annualLeave=parseInt($(user_info_td[4]).text());
+        userInfo.businessLeave=parseInt($(user_info_td[5]).text());
+        userInfo.bereavementLeave=parseInt($(user_info_td[6]).text());
+        userInfo.sickLeave=parseInt($(user_info_td[7]).text());
+        userInfo.transferLeave=parseInt($(user_info_td[8]).text());
+        userInfo.marriageLeave=parseInt($(user_info_td[9]).text());
+        userInfo.bereavementLeave=parseInt($(user_info_td[10]).text());
+        userInfo.desc=$(user_info_td[11]).text();
+        userInfo.displayName=$(user_info_td[0]).text();
+        $("#edit_userInfo_form").css({'top':"10%"}).show();
+        $("#block_div").css({'height':$(document).height()}).show();
+        initEditUserInfoForm();
+    }
+
+    function initEditUserInfoForm() {
+        $("input[name='_id']").val(userInfo._id);
+        $("input[name='displayName']").val(userInfo.displayName);
+        $("input[name='mail']").val(userInfo.mail);
+        $("input[name='leadGid']").val(userInfo.leadGid);
+        $("input[name='belToGid']").val(userInfo.belToGid);
+        $("input[name='annualLeave']").val(userInfo.annualLeave);
+        $("input[name='businessLeave']").val(userInfo.businessLeave);
+        $("input[name='maternityLeave']").val(userInfo.maternityLeave);
+        $("input[name='sickLeave']").val(userInfo.sickLeave);
+        $("input[name='transferLeave']").val(userInfo.transferLeave);
+        $("input[name='marriageLeave']").val(userInfo.marriageLeave);
+        $("input[name='bereavementLeave']").val(userInfo.bereavementLeave);
+        $("input[name='desc']").val(userInfo.desc);
+    }
+    function isLegitimate(value) {
+        if(value == 'NaN'){
+            return "";
+        }
+        if(value == "undefined"){
+            return "";
+        }
+        return value;
+    }
+
+    function getEditUserInfo() {
+        userInfo._id =  isLegitimate($("#_id").val());
+        userInfo.displayName = isLegitimate($("#displayName").val());
+        userInfo.mail = isLegitimate($("#mail").val());
+        userInfo.leadGid = isLegitimate($("#leadGid").val());
+        userInfo.belToGid = isLegitimate($("#belToGid").val());
+        userInfo.annualLeave =isLegitimate($("#annualLeave").val());
+        userInfo.businessLeave = isLegitimate($("#businessLeave").val());
+        userInfo.maternityLeave =  isLegitimate($("#maternityLeave").val());
+        userInfo.sickLeave = isLegitimate($("#sickLeave").val());
+        userInfo.transferLeave = isLegitimate($("#transferLeave").val());
+        userInfo.marriageLeave = isLegitimate($("#marriageLeave").val());
+        userInfo.bereavementLeave = isLegitimate($("#bereavementLeave").val());
+        userInfo.desc = isLegitimate($("#desc").val());
+    }
+
+    $("#submit_user_info").bind('click',function () {
+        getEditUserInfo();
+        $.ajax({
+            type:"post",
+            url: "/userInfo/api/update",
+            data: {userInfo:JSON.stringify(userInfo)},
+            dataType: "json",
+            success: function (response) {
+                if(response.status==1){
+                    userInfoTableReload();
+                    alert("更新成功");
+                    $("#block_div").hide();
+                    $("#edit_userInfo_form").hide();
+                }
+            },
+            error: function (data) {
+                printAjaxError(data);
+            }
+        });
+    })
+
+    $("#block_div").bind('click',function(){
+        $("#block_div").hide();
+        $("#edit_userInfo_form").hide();
+    });
+
+    $("#edit_user_info_cancel").bind('click',function () {
+        $("#block_div").hide();
+        $("#edit_userInfo_form").hide();
+    })
+    
+    $(document).ready(function () {
+        initPriceViewDataTable();
+    });
+
+</script>

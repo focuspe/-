@@ -1,0 +1,156 @@
+<div class="row">
+    <div class="col-md-12">
+        <h2 class="fw-title">加班登记</h2>
+        <div class="box-widget">
+            <div class="widget-head clearfix">
+                <!--<div id="top_tabby" class="block-tabby pull-left"><ul id="stepy_form-titles" class="stepy-titles clearfix"><li id="stepy_form-title-0" class="current-step"><div>Step 1</div><span>加 班 时 间</span></li><li id="stepy_form-title-1" class=""><div>Step 2</div><span>加 班 事 由</span></li></ul></div>-->
+            </div>
+            <div class="widget-container">
+                <div class="widget-block">
+                    <div class="widget-content box-padding">
+                        <form id="stepy_form" class=" form-horizontal left-align form-well" novalidate="novalidate">
+                            <fieldset title="Step 1" class="step" id="stepy_form-step-0" style="display: block;">
+                                <div class="form-group">
+                                    <label class="col-md-2 col-sm-2 control-label">开始时间</label>
+                                    <div class="col-md-6">
+                                            <div data-date="2016-09-21T15:25:00Z" class="input-group date form_datetime-adv">
+                                                <input type="text" class="form-control" readonly="" size="16" id="over_work_start_time">
+                                                <div class="input-group-btn">
+                                                    <button type="button" class="btn btn-primary date-reset"><i class="fa fa-times"></i></button>
+                                                    <button type="button" class="btn btn-success date-set"><i class="fa fa-calendar"></i></button>
+                                                </div>
+                                            </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-2 col-sm-2 control-label">结束时间</label>
+                                    <div class="col-md-6">
+                                        <div data-date="2016-08-21T15:25:00Z" class="input-group date form_datetime-adv">
+                                            <input type="text" class="form-control" readonly="" size="16" id="over_work_end_time">
+                                            <div class="input-group-btn">
+                                                <button type="button" class="btn btn-primary date-reset"><i class="fa fa-times"></i></button>
+                                                <button type="button" class="btn btn-success date-set"><i class="fa fa-calendar"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p id="stepy_form-buttons-0" class="stepy_form-buttons"><a id="stepy_form-next-0"   href="javascript:void(0);"></a></p></fieldset>
+                            <fieldset title="Step 2" class="step" id="stepy_form-step-1">
+                                <div class="form-group">
+                                    <label class="col-md-2 col-sm-2 control-label">加班事由</label>
+                                    <div class="col-md-6 col-sm-6">
+                                        <input type="text" placeholder="加班事由" class="form-control valid" id="over_work_reason">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-2 col-sm-2 control-label">备注</label>
+                                    <div class="col-md-6 col-sm-6">
+                                        <input type="text" placeholder="备注" class="form-control valid" id="over_work_desc">
+                                    </div>
+                                </div>
+                                <p id="stepy_form-buttons-1" class="stepy_form-buttons"></p></fieldset>
+
+                            <a class="col-md-4 col-sm-4"></a><a id="stepy_form-next-1" href="javascript:void(0);" class="btn btn-info">确定</a>
+                            </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<link href="/bootstrap/css/jquery.stepy.css" rel="stylesheet">
+<link href="/bootstrap/css/style-responsive.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="/bootstrap/js/bootstrap-datepicker/css/datepicker-custom.css" />
+<link rel="stylesheet" type="text/css" href="/bootstrap/js/bootstrap-timepicker/css/timepicker.css" />
+<link rel="stylesheet" type="text/css" href="/bootstrap/js/bootstrap-colorpicker/css/colorpicker.css" />
+<link rel="stylesheet" type="text/css" href="/bootstrap/js/bootstrap-daterangepicker/daterangepicker-bs3.css" />
+<link rel="stylesheet" type="text/css" href="/bootstrap/js/bootstrap-datetimepicker/css/datetimepicker-custom.css" />
+
+
+
+<script src="/bootstrap/js/jquery-ui-1.9.2.custom.min.js"></script>
+<script src="/bootstrap/js/jquery-migrate-1.2.1.min.js"></script>
+<script src="/bootstrap/js/jquery.validate.min.js"></script>
+<script src="/bootstrap/js/jquery.stepy.js"></script>
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+<script src="/bootstrap/js/modernizr.min.js"></script>
+<script src="/bootstrap/js/jquery.nicescroll.js"></script>
+
+<!--pickers plugins-->
+<!--<script type="text/javascript" src="/bootstrap/js/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>-->
+<script type="text/javascript" src="/bootstrap/js/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+<script type="text/javascript" src="/bootstrap/js/bootstrap-daterangepicker/moment.min.js"></script>
+<script type="text/javascript" src="/bootstrap/js/bootstrap-daterangepicker/daterangepicker.js"></script>
+<script type="text/javascript" src="/bootstrap/js/bootstrap-colorpicker/js/bootstrap-colorpicker.js"></script>
+<script type="text/javascript" src="/bootstrap/js/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
+
+<!--pickers initialization-->
+<script src="/bootstrap/js/pickers-init.js"></script>
+
+
+<script>
+    var re_next = function(){
+        var startTime =  $("#over_work_start_time").val();
+        var endTime = $("#over_work_end_time").val();
+        if(startTime && endTime){
+            $("#stepy_form-step-0").hide();
+            $("#stepy_form-step-1").show();
+            $("#stepy_form-title-0").removeClass("current-step");
+            $("#stepy_form-title-1").addClass("current-step");
+        }
+    }
+    $("#stepy_form-buttons-0").bind("click",function(){
+        re_next();
+    });
+    $(" #stepy_form-title-1").bind("click",function(){
+        re_next();
+    });
+    $("#stepy_form-title-0").bind("click",function(){
+        $("#stepy_form-step-0").show();
+        $("#stepy_form-step-1").hide();
+        $("#stepy_form-title-0").addClass("current-step");
+        $("#stepy_form-title-1").removeClass("current-step");
+    })
+
+    $("#stepy_form-back-1").bind("click",function(){
+        $("#stepy_form-step-0").show();
+        $("#stepy_form-step-1").hide();
+        $("#stepy_form-title-0").addClass("current-step");
+        $("#stepy_form-title-1").removeClass("current-step");
+    });
+  //  stepy_form-titles
+
+    $("#stepy_form-next-1").bind("click",function(){
+        var start =  ($("#over_work_start_time").val()).replace(" - "," ");
+        var end = ($("#over_work_end_time").val()).replace(" - "," ");
+        var startTime = (new Date(start)).getTime();
+        var endTime = (new Date(end)).getTime();
+        var reason = $("#over_work_reason").val();
+        var desc = $("#over_work_desc").val();
+        if(endTime > startTime){
+            var requestData = {
+                startTime:startTime,
+                endTime:endTime,
+                duration:reason,
+                desc:desc
+            }
+            $.ajax({
+                type: "POST",
+                url: "/overtime/api/add",
+                dataType: "json",
+                data: requestData,
+                success: function (response) {
+                    if(response.status==1){
+                        window.location.href="/overtime/show";
+                    }else{
+                        alert("登记失败");
+                    }
+                }
+            });
+        }else{
+            alert("时间有误");
+        }
+
+    })
+
+</script>

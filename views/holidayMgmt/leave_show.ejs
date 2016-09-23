@@ -1,0 +1,110 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-12">
+        <h2><span id="breadcrumbsTitle">员工可用假查询</span></h2>
+        <ol class="breadcrumb">
+            <li>
+                <a>考勤管理</a>
+            </li>
+            <li class="active">
+                <strong>员工可用假查询</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+    <form id="pageForm">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox m-b-none">
+                    <div class="ibox-content">
+                        <div class="table-responsive">
+                            <table id="leaveRecodeTable"
+                                   class="table table-striped table-bordered table-hover"
+                                   cellspacing="0" width="100%">
+                                <thead>
+                                <tr>
+                                    <th style="width: 8%;">员工</th>
+                                    <th style="width: 8%;">可用年假</th>
+                                    <th style="width: 8%;"> 可用病假</th>
+                                    <th style="width: 8%;"> 可用事假</th>
+                                    <th style="width: 8%;">可用调休时间</th>
+                                    <th style="width: 8%;">可用婚假</th>
+                                    <th style="width: 8%;">可用产假</th>
+                                    <th style="width: 8%;">可用丧假</th>
+                                    <th style="width: 8%;">可用陪护假</th>
+                                    <th style="width: 8%;">其它</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </form>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox">
+                <div class="ibox-content">
+                    <div class="form-horizontal">
+                        <div class="form-group m-b-none">
+                            <div class="col-lg-12">
+                                <a href="/file/excelDown.xlsx?available_leaves_" id="leaveRecode" class="btn btn-primary">导出</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<link href="/bootstrap/css/bootstrap.theme.min.css" rel="stylesheet">
+<script>
+    function loadAvailableLeaveInfo() {
+        $.ajax({
+            type:"POST",
+            url:"/leave/api/getAvailableLeaves",
+            datatype:"json",
+            success:function (data) {
+                var status = data['status'] ;
+                var result = data['data'];
+                if ((status !== 1) || !result) {
+                    alert('数据加载失败！');
+                    return;
+                }
+                for (var i=0;i<result.length;i++) {
+                    var avaiAnnLev = (result[i]['annualLeave']?result[i]['annualLeave']:0) - (result[i]['annualLeaveUsed']?result[i]['annualLeaveUsed']:0);
+                    var avaiSickLev = (result[i]['sickLeave']?result[i]['sickLeave']:0) - (result[i]['sickLeaveUsed']?result[i]['sickLeaveUsed']:0);
+                    var avaiBusLev = (result[i]['businessLeave']?result[i]['businessLeave']:0) - (result[i]['businessLeaveUsed']?result[i]['businessLeaveUsed']:0);
+                    var avaiTrfLev = (result[i]['transferLeave']?result[i]['transferLeave']:0) - (result[i]['transferLeaveUsed']?result[i]['transferLeaveUsed']:0);
+                    var avaiMrgLev = (result[i]['marriageLeave']?result[i]['marriageLeave']:0) - (result[i]['marriageLeaveUsed']?result[i]['marriageLeaveUsed']:0);
+                    var avaiMttLev = (result[i]['maternityLeave']?result[i]['maternityLeave']:0) - (result[i]['maternityLeaveUsed']?result[i]['maternityLeaveUsed']:0);
+                    var avaiBrmLev = (result[i]['bereavementLeave']?result[i]['bereavementLeave']:0) - (result[i]['bereavementLeaveUsed']?result[i]['bereavementLeaveUsed']:0);
+                    var avaiNrsLev = (result[i]['nursesLeave']?result[i]['nursesLeave']:0) - (result[i]['nursesLeaveUsed']?result[i]['nursesLeaveUsed']:0);
+                    var avaiOthLev = (result[i]['otherLeave']?result[i]['otherLeave']:0) - (result[i]['otherLeaveUsed']?result[i]['otherLeaveUsed']:0);
+                    var td = "<tr>" +
+                             "<td>" + result[i]['displayName'] + "</td>" +
+                             "<td>" + avaiAnnLev + "小时</td>" +
+                             "<td>" + avaiSickLev + "小时</td>" +
+                             "<td>" + avaiBusLev + "小时</td>" +
+                             "<td>" + avaiTrfLev + "小时</td>" +
+                             "<td>" + avaiMrgLev + "小时</td>" +
+                             "<td>" + avaiMttLev + "小时</td>" +
+                             "<td>" + avaiBrmLev + "小时</td>" +
+                             "<td>" + avaiNrsLev + "小时</td>" +
+                             "<td>" + avaiOthLev + "小时</td>" +
+                             "</tr>"
+                    $('#leaveRecodeTable').append($(td));
+                }
+            },
+            error:function (error) {
+                alert('数据请求出错！,error:' + JSON.stringify(error));
+            }
+        });
+    }
+    loadAvailableLeaveInfo();
+</script>
